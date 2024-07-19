@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:13
+    image: postgres:16
     container_name: postgres
     environment:
       POSTGRES_USER: postgres
@@ -13,16 +13,23 @@ services:
     networks:
       - api_network
 
-  pgadmin:
-    image: dpage/pgadmin4
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+  backend:
+    build:
+      dockerfile: ./backend/WebApi/Dockerfile
+    container_name: backend
     ports:
-      - "8080:80"
+      - "8081:8080"
     depends_on:
       - postgres
+    networks:
+      - api_network
+
+  frontend:
+    build:
+      dockerfile: ./frontend/Dockerfile
+    container_name: frontend
+    ports:
+      - "3000:80"
     networks:
       - api_network
 
