@@ -42,7 +42,7 @@
     </div>
 
     <br />
-    <button @click="onDownload(selectedAssignmentName, filteredWorkHours, totalHours)" type="button" class="btn btn-primary">
+    <button id="pdfBtn" class="btn text-light" @click="onDownload(selectedAssignmentName, filteredWorkHours, totalHours)">
       PDF herunterladen
     </button>
   </div>
@@ -111,4 +111,12 @@ watchEffect(() => {
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+#pdfBtn {
+  background-color: #212121;
+}
+
+#pdfBtn:hover {
+  background-color: #424242;
+}
+</style>
