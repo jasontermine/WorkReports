@@ -1,6 +1,6 @@
 <template>
   <VLayout>
-    <VNavigationDrawer expand-on-hover rail>
+    <VNavigationDrawer theme="dark" expand-on-hover rail>
       <VList>
         <VListItem
           prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
