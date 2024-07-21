@@ -14,16 +14,17 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "axios": "^1.7.2",
     "dom-to-image": "^2.6.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "pinia": "^2.1.7",
+    "vee-validate": "^4.13.2",
     "vue": "^3.4.29",
     "vue-router": "^4.4.0",
-    "vuetify": "^3.6.13",
-    "@mdi/font": "^7.4.47"
+    "vuetify": "^3.6.13"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
