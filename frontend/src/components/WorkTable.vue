@@ -1,12 +1,23 @@
 <template>
   <div class="wrapper">
-    <div class="mb-4 d-flex flex-row gap-4">
+    <div class="mb-4 d-flex flex-row gap-4 align-items-center">
       <label for="assignment-select">Select Assignment:</label>
-      <select id="assignment-select" v-model="selectedAssignmentId">
-        <option v-for="assignment in assignments" :key="assignment.uuid" :value="assignment.uuid">
-          {{ assignment.name }}
-        </option>
-      </select>
+      <VSelect
+        class="pt-5"
+        density="compact"
+        max-width="15rem"
+        item-title="name"
+        :items="assignments"
+        :label="selectedAssignmentName"
+      >
+        <template v-slot:item="{ props, item }">
+          <VListItem
+            @click="selectedAssignmentId = item.raw.uuid"
+            v-bind="props"
+            :subtitle="`${formatDate(item.raw.startDate)} - ${formatDate(item.raw.dueDate)}`"
+          ></VListItem>
+        </template>
+      </VSelect>
 
       <label for="date-range">Select Date Range:</label>
       <input type="date" v-model="startDate" />
@@ -15,7 +26,9 @@
 
     <div>
       <h2>Regie Rapport für {{ selectedAssignmentName }}</h2>
-      <p v-if="startDate && endDate">Periode: {{ formattedStartDate }} bis {{ formattedEndDate }}</p>
+      <p v-if="startDate && endDate">
+        Periode: {{ formattedStartDate }} bis {{ formattedEndDate }}
+      </p>
 
       <table class="table">
         <thead>
@@ -42,7 +55,11 @@
     </div>
 
     <br />
-    <button id="pdfBtn" class="btn text-light" @click="onDownload(selectedAssignmentName, filteredWorkHours, totalHours)">
+    <button
+      id="pdfBtn"
+      class="btn text-light"
+      @click="onDownload(selectedAssignmentName, filteredWorkHours, totalHours)"
+    >
       PDF herunterladen
     </button>
   </div>
@@ -50,6 +67,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watchEffect } from 'vue'
+import { VSelect } from 'vuetify/components'
 import { onDownload } from '@/domain/createPDF'
 import { formatDate } from '@/domain/helpers'
 import { useEmployeeStore } from '@/store/EmployeeStore'
