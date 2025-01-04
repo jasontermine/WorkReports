@@ -1,3 +1,5 @@
+import type { IServerResponse } from "@/types/ServerResponse"
+
 export interface IEmployeeAssignment {
   id: number
   employeeUuid: string
@@ -6,7 +8,6 @@ export interface IEmployeeAssignment {
   recordedAt: string
 }
 
-export interface IEmployeeAssignmentResponse {
-  status: number
+export interface IEmployeeAssignmentResponse extends IServerResponse {
   data: IEmployeeAssignment[]
 }

@@ -1,3 +1,5 @@
+import type { IServerResponse } from "@/types/ServerResponse"
+
 export interface IEmployee {
   uuid: string
   firstName: string
@@ -5,7 +7,6 @@ export interface IEmployee {
   age: number
 }
 
-export interface IEmployeeResponse {
-	status: number
+export interface IEmployeeResponse extends IServerResponse {
 	data: IEmployee[]
 }

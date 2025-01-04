@@ -1,3 +1,5 @@
+import type { IServerResponse } from "@/types/ServerResponse"
+
 export interface IAssignment {
   uuid: string
   name: string
@@ -5,7 +7,6 @@ export interface IAssignment {
   dueDate: Date
 }
 
-export interface IAssignmentResponse {
-	status: number
+export interface IAssignmentResponse extends IServerResponse {
 	data: IAssignment[]
 }
