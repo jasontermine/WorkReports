@@ -1,6 +1,5 @@
 import jsPDF from 'jspdf'
 import autoTable, { type UserOptions } from 'jspdf-autotable'
-import { formatDate } from '@/domain/helpers'
 import type { FilteredWorkHours } from '@/types/FilteredWorkHours'
 
 /**
